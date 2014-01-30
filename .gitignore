@@ -1,0 +1,14 @@
+# Duplicate Files
+duplicates/
+
+# Neural Networks
+neural_networks/
+
+# Test Data
+test_data/
+
+# Stations
+stations/
+
+# Existing Filters
+Filtro.mat
