@@ -7,9 +7,9 @@ function [num Int2] = GeneraIntervalos(tamIntervalo, traslape, numArch, Int)
     horaS = '';
     tiempo = [];
     T = [];
-    load('Filtro.mat','Hd');
+    load('~/Dev/p_s_signal_sorter/Filtro.mat','Hd');
     try
-    load(strcat(strcat('Estacion',num2str(numArch)),'.mat'),'horaP','horaS','T','tiempo');
+    load(strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'horaP','horaS','T','tiempo');
     
     [tiempo T]= revisaTarget(tiempo,T,horaP,horaS);
     
@@ -121,16 +121,16 @@ function [num Int2] = GeneraIntervalos(tamIntervalo, traslape, numArch, Int)
        
        %assignin('base','Valor',Int);
        if(estado == 0)    
-           save (strcat(strcat('Estacion',num2str(numArch)),'.mat'),'-append', 'Int1');
-           save (strcat(strcat('Estacion',num2str(numArch)),'.mat'),'-append', 'TF');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'Int1');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'TF');
        end
        if(estado == 1)    
-           save (strcat(strcat('Estacion',num2str(numArch)),'NO.mat'),'-append', 'Int1');
-           save (strcat(strcat('Estacion',num2str(numArch)),'NO.mat'),'-append', 'TF');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'Int1');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'TF');
        end
        if(estado == 2)
-           save (strcat(strcat('Estacion',num2str(numArch)),'NOO.mat'),'-append', 'Int1');
-           save (strcat(strcat('Estacion',num2str(numArch)),'NOO.mat'),'-append', 'TF');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NOO.mat'),'-append', 'Int1');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NOO.mat'),'-append', 'TF');
        end
        num = j - 1;
 
