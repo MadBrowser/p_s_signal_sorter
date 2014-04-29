@@ -13,3 +13,6 @@ stations/
 # Existing Filters
 Filtro.mat
 *.txt
+
+# Data Files
+Data/
