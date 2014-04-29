@@ -7,9 +7,9 @@ function [num Int2] = GeneraIntervalos(tamIntervalo, traslape, numArch, Int)
     horaS = '';
     tiempo = [];
     T = [];
-    load('Filtro.mat','Hd');
+    load('~/Dev/p_s_signal_sorter/Filtro.mat','Hd');
     try
-    load(strcat(strcat('Estacion',num2str(numArch)),'.mat'),'horaP','horaS','T','tiempo');
+    load(strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'horaP','horaS','T','tiempo');
     
     [tiempo T]= revisaTarget(tiempo,T,horaP,horaS);
     
@@ -35,36 +35,36 @@ function [num Int2] = GeneraIntervalos(tamIntervalo, traslape, numArch, Int)
 % instrucci?n Title, cambiarla por title
     disp(strcat('filtro la se?al',num2str(numArch)));
     TF = filter(Hd,T);
-    subplot(3,2,1);
-    plot(T(:,1),'r');
-    title(strcat('Se?al original eje N: ',num2str(numArch)));
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,3);
-    plot(T(:,2),'k');
-    title(strcat('Se?al original eje E: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,5);
-    plot(T(:,3),'b');
-    title(strcat('Se?al original eje Z: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,2);
-    plot(TF(:,1),'r');
-    title(strcat('Se?al filtrada eje N: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,4);
-    plot(TF(:,2),'k');
-    title(strcat('Se?al filtrada eje E: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,6);
-    plot(TF(:,3),'b');
-    title(strcat('Se?al filtrada eje Z: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo');
+%     subplot(3,2,1);
+%     plot(T(:,1),'r');
+%     title(strcat('Se?al original eje N: ',num2str(numArch)));
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,3);
+%     plot(T(:,2),'k');
+%     title(strcat('Se?al original eje E: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,5);
+%     plot(T(:,3),'b');
+%     title(strcat('Se?al original eje Z: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,2);
+%     plot(TF(:,1),'r');
+%     title(strcat('Se?al filtrada eje N: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,4);
+%     plot(TF(:,2),'k');
+%     title(strcat('Se?al filtrada eje E: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,6);
+%     plot(TF(:,3),'b');
+%     title(strcat('Se?al filtrada eje Z: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo');
 %
 %
 %      pause;
@@ -121,16 +121,16 @@ function [num Int2] = GeneraIntervalos(tamIntervalo, traslape, numArch, Int)
        
        %assignin('base','Valor',Int);
        if(estado == 0)    
-           save (strcat(strcat('Estacion',num2str(numArch)),'.mat'),'-append', 'Int1');
-           save (strcat(strcat('Estacion',num2str(numArch)),'.mat'),'-append', 'TF');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'Int1');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'TF');
        end
        if(estado == 1)    
-           save (strcat(strcat('Estacion',num2str(numArch)),'NO.mat'),'-append', 'Int1');
-           save (strcat(strcat('Estacion',num2str(numArch)),'NO.mat'),'-append', 'TF');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'Int1');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'TF');
        end
        if(estado == 2)
-           save (strcat(strcat('Estacion',num2str(numArch)),'NOO.mat'),'-append', 'Int1');
-           save (strcat(strcat('Estacion',num2str(numArch)),'NOO.mat'),'-append', 'TF');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NOO.mat'),'-append', 'Int1');
+           save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NOO.mat'),'-append', 'TF');
        end
        num = j - 1;
 
