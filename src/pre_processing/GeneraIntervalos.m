@@ -35,36 +35,36 @@ function [num Int2] = GeneraIntervalos(tamIntervalo, traslape, numArch, Int)
 % instrucci?n Title, cambiarla por title
     disp(strcat('filtro la se?al',num2str(numArch)));
     TF = filter(Hd,T);
-    subplot(3,2,1);
-    plot(T(:,1),'r');
-    title(strcat('Se?al original eje N: ',num2str(numArch)));
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,3);
-    plot(T(:,2),'k');
-    title(strcat('Se?al original eje E: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,5);
-    plot(T(:,3),'b');
-    title(strcat('Se?al original eje Z: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,2);
-    plot(TF(:,1),'r');
-    title(strcat('Se?al filtrada eje N: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,4);
-    plot(TF(:,2),'k');
-    title(strcat('Se?al filtrada eje E: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo')
-    subplot(3,2,6);
-    plot(TF(:,3),'b');
-    title(strcat('Se?al filtrada eje Z: ',num2str(numArch)))
-    ylabel('Amplitud');
-    xlabel('Tiempo');
+%     subplot(3,2,1);
+%     plot(T(:,1),'r');
+%     title(strcat('Se?al original eje N: ',num2str(numArch)));
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,3);
+%     plot(T(:,2),'k');
+%     title(strcat('Se?al original eje E: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,5);
+%     plot(T(:,3),'b');
+%     title(strcat('Se?al original eje Z: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,2);
+%     plot(TF(:,1),'r');
+%     title(strcat('Se?al filtrada eje N: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,4);
+%     plot(TF(:,2),'k');
+%     title(strcat('Se?al filtrada eje E: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo')
+%     subplot(3,2,6);
+%     plot(TF(:,3),'b');
+%     title(strcat('Se?al filtrada eje Z: ',num2str(numArch)))
+%     ylabel('Amplitud');
+%     xlabel('Tiempo');
 %
 %
 %      pause;
