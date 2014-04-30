@@ -17,12 +17,12 @@ conjuntos = {
 %      'Cjto20,72', 'DATAFIN7', 'Test20,72';'Cjto20,81', 'DATAFIN7', 'Test20,81';'Cjto20,82', 'DATAFIN7', 'Test20,82';
 %      'Cjto20,91', 'DATAFIN6', 'Test20,91';'Cjto20,92', 'DATAFIN6', 'Test20,92';'Cjto21,1', 'DATAFIN6', 'Test21';
 %      'Cjto22,1', 'DATAFIN6', 'Test22';
-    'Cjto23,1', 'DATAFIN8', 'Test23';'Cjto24,1', 'DATAFIN8', 'Test24';
-    'Cjto25,1', 'DATAFIN8', 'Test25';'Cjto26,1', 'DATAFIN8', 'Test26';'Cjto27,1', 'DATAFIN7', 'Test27';
-    'Cjto28,1', 'DATAFIN7', 'Test28';'Cjto29,1', 'DATAFIN7', 'Test29';'Cjto30,1', 'DATAFIN7', 'Test30';
-    'Cjto31,1', 'DATAFIN7', 'Test31';'Cjto31,71', 'DATAFIN7', 'Test31,71';'Cjto31,72', 'DATAFIN7', 'Test31,72';
-    'Cjto31,81', 'DATAFIN7', 'Test31,81';'Cjto31,82', 'DATAFIN6', 'Test31,82';'Cjto31,91', 'DATAFIN7', 'Test31,91';
-    'Cjto31,92', 'DATAFIN6', 'Test31,92';'Cjto32,1', 'DATAFIN7', 'Test32';'Cjto33,1', 'DATAFIN6', 'Test33'
+%     'Cjto23,1', 'DATAFIN8', 'Test23';'Cjto24,1', 'DATAFIN8', 'Test24';
+%     'Cjto25,1', 'DATAFIN8', 'Test25';'Cjto26,1', 'DATAFIN8', 'Test26';'Cjto27,1', 'DATAFIN7', 'Test27';
+%     'Cjto28,1', 'DATAFIN7', 'Test28';'Cjto29,1', 'DATAFIN7', 'Test29';'Cjto30,1', 'DATAFIN7', 'Test30';
+%     'Cjto31,1', 'DATAFIN7', 'Test31';'Cjto31,71', 'DATAFIN7', 'Test31,71';'Cjto31,72', 'DATAFIN7', 'Test31,72';
+%     'Cjto31,81', 'DATAFIN7', 'Test31,81';'Cjto31,82', 'DATAFIN6', 'Test31,82';'Cjto31,91', 'DATAFIN7', 'Test31,91';
+%     'Cjto31,92', 'DATAFIN6', 'Test31,92';'Cjto32,1', 'DATAFIN7', 'Test32';'Cjto33,1', 'DATAFIN6', 'Test33'
     };
 
 
