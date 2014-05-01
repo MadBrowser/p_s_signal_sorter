@@ -1,9 +1,7 @@
 %% Funcion que tiene como fin calcular los errores en base a la matriz de
 %% confusion, para esto se discrimina entre conjuntos de entrenamiento y el
 %% de test, el cual se obtienen mas indicadores de error
-function error = calculaError(matriz,origen)
-P0 = 0;
-Pe = 0;
+function error = calculaError(matriz, origen)s
 if(origen == 0)
     error = sum(diag(matriz));
     denominador = error + matriz(1,2) + matriz(1,3) + matriz(2,1) + matriz(2,3) +matriz(3,1) + matriz(3,2);
