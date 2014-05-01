@@ -1,32 +1,31 @@
 %% funcion que inicia con el entrenamiento de la SVM con un 0,7 para el
 %% entrenamiento y el otro 0,3 para validacion
-function [sist matriz] = SVM(DATA,C,sigma)
+function [sist, matriz] = SVM(DATA, C, S)
 
-tam = length(DATA);
-[trainInd,valInd,testInd] = dividerand(DATA',0.7,0.3,0);
+[trainInd, valInd] = dividerand(DATA', 0.7, 0.3);
 
 trainInd = trainInd';
 valInd = valInd';
 
-tar = trainInd(:,15:17);
-ext = trainInd(:,1:14);
+tar = trainInd(:,14:15);
+ext = trainInd(:,1:13);
 
-tartst = valInd(:,15:17);
-exttst = valInd(:,1:14);
+tartst = valInd(:,14:15);
+exttst = valInd(:,1:13);
 
-tar( tar == 0 ) = -1;
-tartst( tartst == 0 ) = -1;
+tar(tar == 0) = -1;
+tartst(tartst == 0) = -1;
 
 % P = length(tar(tar(:,1)==1));
 % S = length(tar(tar(:,2)==1));
 % R = length(tar(tar(:,3)==1));
 
-d = data(ext,tar);
-d2 = data(exttst,tartst);
+d = data(ext, tar);
+d2 = data(exttst, tartst);
 
-[rest,sist]=train(one_vs_rest(svm({kernel('rbf',2^sigma),'optimizer="andre"',strcat('C=',num2str(2^C))})),d);
+[~, sist] = train(one_vs_rest(svm({kernel('rbf',2^S), 'optimizer="andre"', strcat('C=', num2str(2^C))})), d);
 
-tst=test(sist,d2,'confusion_matrix');
+tst = test(sist, d2, 'confusion_matrix');
 matriz = tst.Y';
 
 % tar = DATATOT(:,15:17);tar( tar == 0 ) = -1;
