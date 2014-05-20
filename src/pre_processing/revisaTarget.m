@@ -1,4 +1,4 @@
-function [TF TD] = revisaTarget(Tiempo, T, horaP, horaS)
+function [TF, TD] = revisaTarget(Tiempo, T, horaP, horaS)
 
 tam = length(Tiempo);
 
@@ -22,7 +22,7 @@ horaPDate = datevec(horaP,'HH:MM:SS.FFF');
 horaSDate = datevec(horaS,'HH:MM:SS.FFF');
 
 
-[resto,targetT] = strtok(Tiempo,'T');
+[~, targetT] = strtok(Tiempo,'T');
 targetT = strrep(targetT, 'T', '');
 
 for i=1:tam(1,1)
