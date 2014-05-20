@@ -23,7 +23,7 @@ horaPDate = datevec(horaP,'HH:MM:SS.FFF');
 horaSDate = datevec(horaS,'HH:MM:SS.FFF');
 
 
-[~, targetT] = strtok(Tiempo,'T');
+[resto, targetT] = strtok(Tiempo,'T');
 targetT = strrep(targetT, 'T', '');
 
 for i=1:tam(1,1)
