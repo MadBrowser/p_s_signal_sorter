@@ -1,21 +1,18 @@
 function [num, Int2] = GeneraIntervalos(tamIntervalo, traslape, numArch, Int)
 
 % Variables globales
-estado = 0;
 horaP = '';
 horaS = '';
 tiempo = [];
 T = [];
+num = 0;
+Int2 = Int;
 
 % cargo los datos que necesito
 load('~/Dev/p_s_signal_sorter/Filtro.mat','Hd');
 try
     load(strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'horaP','horaS','T','tiempo');
-    [tiempo, T, estado] = revisaTarget(tiempo,T,horaP,horaS);
-    
 catch
-    num = 0;
-    Int2 = Int;
     return;
 end
 
@@ -23,16 +20,24 @@ Int1 = [];
 max = size(T);
 j = 1;
 
-% T(:,1) = normalizarEje(T(:,1));
-% T(:,2) = normalizarEje(T(:,2));
-% T(:,3) = normalizarEje(T(:,3));
-% 
-% Esta parte de ac? debe ser cambiada para matlab 2013, no reconoce la
-% instrucci?n Title, cambiarla por title
+% Revisa que la información de la estación contenga los datos de HoraP y HoraS
+[tiempo, T, estado] = revisaTarget(tiempo, T, horaP, horaS);
 
-disp(strcat('filtro la señal',num2str(numArch)));
+% Filtra la señal
+disp(strcat('filtro la señal ', num2str(numArch)));
 TF = filter(Hd,T);
 
+% Guarda la información de la señal filtrada y su intervalo en la estación.
+if(estado == 1)
+    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'Int1');
+    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'TF');
+else % Descarta estaciones inválidas
+    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'Int1');
+    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'TF');
+    return;
+end
+
+% Grafica la señal pre y pos filtrada.
 % subplot(3,2,1);
 % plot(T(:,1),'r');
 % title(strcat('Se?al original eje N: ',num2str(numArch)));
@@ -65,7 +70,7 @@ TF = filter(Hd,T);
 % xlabel('Tiempo');
 % pause(1);
 
-%obtengo el Target de la se?al P
+%obtengo el Target de la señal P
 [~, targetT] = strtok(tiempo,'T');
 targetT = strrep(targetT, 'T', '');
 target = ismember(targetT, horaP);
@@ -109,20 +114,6 @@ end
 
 Int2 = vertcat(Int,Int1);
 
-
-%assignin('base','Valor',Int);
-if(estado == 0)
-    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'Int1');
-    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'TF');
-end
-if(estado == 1)
-    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'Int1');
-    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'TF');
-end
-if(estado == 2)
-    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NOO.mat'),'-append', 'Int1');
-    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NOO.mat'),'-append', 'TF');
-end
 num = j - 1;
 
 end
