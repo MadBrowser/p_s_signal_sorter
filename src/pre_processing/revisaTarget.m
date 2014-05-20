@@ -1,7 +1,8 @@
 function [TF, TD, estado] = revisaTarget(Tiempo, T, horaP, horaS)
 
+% Variables Globales
 tam = length(Tiempo);
-
+estado = -1;
 estadoS = -1;
 estadoP = -1;
 T3 = Tiempo;
