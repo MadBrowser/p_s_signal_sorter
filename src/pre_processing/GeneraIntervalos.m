@@ -1,4 +1,6 @@
 function [num, Int2] = GeneraIntervalos(tamIntervalo, traslape, numArch, Int)
+
+% Variables globales
 estado = 0;
 horaP = '';
 horaS = '';
@@ -9,8 +11,7 @@ T = [];
 load('~/Dev/p_s_signal_sorter/Filtro.mat','Hd');
 try
     load(strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'horaP','horaS','T','tiempo');
-    
-    [tiempo, T] = revisaTarget(tiempo,T,horaP,horaS);
+    [tiempo, T, estado] = revisaTarget(tiempo,T,horaP,horaS);
     
 catch
     num = 0;
@@ -87,9 +88,9 @@ for i = 1:(tamIntervalo - traslape):max(1,1)
         break;
     end
     
-    Int1{j,1} = T(i:final,1);
-    Int1{j,2} = T(i:final,2);
-    Int1{j,3} = T(i:final,3);
+    Int1{j,1} = TF(i:final,1);
+    Int1{j,2} = TF(i:final,2);
+    Int1{j,3} = TF(i:final,3);
     
     if (any(target(i:final,1)))
         disp(' LLeno  para P');
