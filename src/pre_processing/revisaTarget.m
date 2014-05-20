@@ -1,4 +1,4 @@
-function [TF, TD] = revisaTarget(Tiempo, T, horaP, horaS)
+function [TF, TD, estado] = revisaTarget(Tiempo, T, horaP, horaS)
 
 tam = length(Tiempo);
 
@@ -40,7 +40,7 @@ for i=1:tam(1,1)
     if(P > 0 && estadoP == -1)
         if(i == 1)
             disp('Error fuera de rango');
-            estadoP = -4;
+            estadoP = -2;
         else
             T1 = T3(1:i-1,:);
             T2 = T3(i:end,:);
@@ -55,7 +55,7 @@ for i=1:tam(1,1)
     if(S > 0 && estadoS == -1)
         if(i == 1)
             disp('Error fuera de rango');
-            estadoS = -4;
+            estadoS = -2;
         else
             T1 = T3(1:i-1,:);
             T2 = T3(i:end,:);
@@ -67,11 +67,15 @@ for i=1:tam(1,1)
     end
 end
 
-if( estadoP == -1 || estadoS == -1 )
-   disp('Error falto un valor'); 
+if(estadoP == 1 && estadoS == 1)
+    estado = 1;
+elseif(estadoP == -1 || estadoS == -1)
+   disp('Error falto un valor');
+   estado = -1;
+elseif(estadoP == -2 || estadoS == -2)
+    estado = -2;
 end
 
 TF = T3;
-
 
 end
