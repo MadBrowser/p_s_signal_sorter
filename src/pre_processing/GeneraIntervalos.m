@@ -7,11 +7,13 @@ tiempo = [];
 T = [];
 num = 0;
 Int2 = Int;
+filter_path = '~/Dev/p_s_signal_sorter/Filtro.mat';
+stations_path = '~/Dev/p_s_signal_sorter/stations/Estacion';
 
 % cargo los datos que necesito
-load('~/Dev/p_s_signal_sorter/Filtro.mat','Hd');
+load(filter_path, 'Hd');
 try
-    load(strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'horaP','horaS','T','tiempo');
+    load(strcat(strcat(stations_path, num2str(numArch)),'.mat'),'horaP','horaS','T','tiempo');
 catch
     return;
 end
@@ -29,11 +31,15 @@ TF = filter(Hd,T);
 
 % Guarda la información de la señal filtrada y su intervalo en la estación.
 if(estado == 1)
-    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'Int1');
-    save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'.mat'),'-append', 'TF');
+    save (strcat(strcat(stations_path,num2str(numArch)),'.mat'),'-append', 'Int1');
+    save (strcat(strcat(stations_path,num2str(numArch)),'.mat'),'-append', 'TF');
 else % Descarta estaciones inválidas
+    % Se renombra el archivo como inválido
+    movefile(strcat(strcat(stations_path,num2str(numArch)),'.mat'), strcat(strcat(stations_path,num2str(numArch)),'NO.mat'));
+    % Se guarda su información
     save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'Int1');
     save (strcat(strcat('~/Dev/p_s_signal_sorter/stations/Estacion',num2str(numArch)),'NO.mat'),'-append', 'TF');
+    disp(strcat('Estación no considerada: ', num2str(numArch)));
     return;
 end
 
