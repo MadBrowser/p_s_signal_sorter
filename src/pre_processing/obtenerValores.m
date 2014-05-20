@@ -5,11 +5,10 @@ diary on
 
 total = 0;
 intervalos = [];
-for i = 0 : numeroMax
+for i = 0 : numeroMax - 1
     disp(strcat('Revisando archivo: Estacion', num2str(i)));
     [num, intervalos] = GeneraIntervalos(150, 50, i, intervalos);
     total = num + total;
-
 end
 
 diary off
