@@ -243,7 +243,7 @@ k = 150;
 l = 50;
 
 if(length(datos) < 149 && length(datos) > 50)
-    k = length(datos)
+    k = length(datos);
 end
 
 % k es el largo del LTA + STA que en este caso es 3 = 150 muestras
