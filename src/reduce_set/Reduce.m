@@ -14,17 +14,17 @@ for i = 1 : length(datosfinales)
     if(datosfinales(i,14) == 1 || datosfinales(i,15) == 1)
         disp('Datos que sirven');
         sirve = 1;
-    end
-    
-    for j = 1 : n_filas_agregadas
-        corrF = corrcoef(datosfinales(i,1:13), ExtrTotal(j,1:13));
-        
-        if((corrF > 0.99))
-            disp('descartado');
-            descarte = 1;
-            break;
-        else
-            descarte = 0;
+    else
+        for j = 1 : n_filas_agregadas
+            corrF = corrcoef(datosfinales(i,1:13), ExtrTotal(j,1:13));
+            
+            if((corrF > 0.99))
+                disp('descartado');
+                descarte = 1;
+                break;
+            else
+                descarte = 0;
+            end
         end
     end
     
