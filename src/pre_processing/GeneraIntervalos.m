@@ -1,4 +1,4 @@
-function [num, Int2] = GeneraIntervalos(tamIntervalo, traslape, numArch, Int, stations_path)
+function [num, Int2] = GeneraIntervalos(ventana, traslape, numArch, Int, stations_path, filtro)
 
 % Variables globales
 horaP = '';
@@ -7,10 +7,10 @@ tiempo = [];
 T = [];
 num = 0;
 Int2 = Int;
-filter_path = '~/Dev/p_s_signal_sorter/Filtro.mat';
+filter_path = '~/Dev/p_s_signal_sorter/Butterworth_Filters.mat';
 
 % cargo los datos que necesito
-load(filter_path, 'Hd');
+f = load(filter_path, filtro);
 try
     load(strcat(strcat(stations_path, num2str(numArch)),'.mat'),'horaP','horaS','T','tiempo');
     Int1 = [];
@@ -22,7 +22,7 @@ try
     
     % Filtra la señal
     disp(strcat('filtro la señal ', num2str(numArch)));
-    TF = filter(Hd,T);
+    TF = filter(f.(filtro), T);
     
     % Guarda la información de la señal filtrada y su intervalo en la estación.
     if(estado == 1)
@@ -83,10 +83,10 @@ try
     target2 = double(target2);
     
     % los separo por intervalo
-    for i = 1:(tamIntervalo - traslape):max(1,1)
-        final = tamIntervalo + i - 1;
+    for i = 1:(ventana - traslape):max(1,1)
+        final = ventana + i - 1;
         
-        if(tamIntervalo + i - 1 > max(1,1))
+        if(ventana + i - 1 > max(1,1))
             final = max(1,1);
         end
         
