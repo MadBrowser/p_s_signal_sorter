@@ -67,7 +67,6 @@ for i = 1:length(conjuntos)
     end
   
     save(strcat(conjuntos{i,1},'.mat'),'-append','svmFinal');
-    Exac
 end
 end
 
