@@ -8,9 +8,9 @@ if(~isempty(DATA))
     pos = find(tar2 >=2);
     DATA(pos,14) = 1;
     DATA(pos,15) = -1;
-%     DATA(pos,15) = 1;
-%     DATA(pos,16) = -1;
-    %DATA(pos,17) = -1;
+%   DATA(pos,15) = 1;
+%   DATA(pos,16) = -1;
+%   DATA(pos,17) = -1;
 
     DATAFIN = DATA;
 else
