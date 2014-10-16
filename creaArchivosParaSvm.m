@@ -2,7 +2,7 @@
 % con nombre <filtro>_<orden>_<ventana> y que tiene como data el conjunto de
 % entrenamiento reducido y total (sin reducir) además del conjunto de
 % extractores de prueba (sin reducir)
-function [] = creaArchivosParaSvm(filterName)
+function [] = createFilesForSVM(filterName)
 % Variables globales
 
 % Orden de los filtros
@@ -44,10 +44,14 @@ for i = orders
        fileName = strcat(strcat(fileNameStructure, '_extractores'), testingName);
        fullPath = strcat(dataPath, fileName);
        load(fullPath, 'extractores');
-       testingext_red = extractores;
+       testing_ext_red = extractores;
+       
+       training_ext_sr = addNoiseColumn(training_ext_sr);
+       training_ext_red = addNoiseColumn(training_ext_red);
+       testing_ext_red = addNoiseColumn(testing_ext_red);
        
        fileName = strcat(dataPath, fileNameStructure, '.mat');
-       save(fileName, 'training_ext_sr', 'training_ext_red', 'testingext_red');
+       save(fileName, 'training_ext_sr', 'training_ext_red', 'testing_ext_red');
     end
 end
     
