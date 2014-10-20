@@ -7,10 +7,10 @@ function [sist, matriz] = SVM(DATA, C, S)
 trainInd = trainInd';
 valInd = valInd';
 
-tar = trainInd(:,14:15);
+tar = trainInd(:,14:16);
 ext = trainInd(:,1:13);
 
-tartst = valInd(:,14:15);
+tartst = valInd(:,14:16);
 exttst = valInd(:,1:13);
 
 tar(tar == 0) = -1;
