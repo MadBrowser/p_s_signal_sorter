@@ -44,14 +44,14 @@ for i = orders
        fileName = strcat(strcat(fileNameStructure, '_extractores'), testingName);
        fullPath = strcat(dataPath, fileName);
        load(fullPath, 'extractores');
-       testing_ext_red = extractores;
+       testing_ext_sr = extractores;
        
        training_ext_sr = addNoiseColumn(training_ext_sr);
        training_ext_red = addNoiseColumn(training_ext_red);
-       testing_ext_red = addNoiseColumn(testing_ext_red);
+       testing_ext_sr = addNoiseColumn(testing_ext_sr);
        
        fileName = strcat(dataPath, fileNameStructure, '.mat');
-       save(fileName, 'training_ext_sr', 'training_ext_red', 'testing_ext_red');
+       save(fileName, 'training_ext_sr', 'training_ext_red', 'testing_ext_sr');
     end
 end
     
