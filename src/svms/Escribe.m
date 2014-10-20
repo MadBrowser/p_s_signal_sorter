@@ -35,20 +35,21 @@ tam = length(DATA);
 inicial = 2;
 
 
-inicio = {i,'SVM',length(DATAFIN),'','','','','',length(DATAFIN), length(DATAFIN(DATAFIN(:,14)==1)), length(DATAFIN(DATAFIN(:,15)==1)), length(DATA)};
-    %, length(DATAFIN(DATAFIN(:,17)==1))
+inicio = {i,'SVM',length(DATAFIN),'','','','','',length(DATAFIN), length(DATAFIN(DATAFIN(:,14)==1)), length(DATAFIN(DATAFIN(:,15)==1)), length(DATA)}, length(DATAFIN(DATAFIN(:,16)==1))
 %csvwrite(nombre,inicio,hoja,strcat('A',int2str(i + inicial)));
 
-
+% indicadores de exactitud por clase y general cjto entrenamiento reducido
 tst=test(svmFinal,d2,'confusion_matrix');
 matriz = tst.Y';
 escribe = calculaError(matriz,1);
 
+% indicadores de exactitud por clase y general cjto entrenamiento s/reducir
 tst1=test(svmFinal,d,'confusion_matrix');
 matriz2 = tst1.Y';
 escribe2 = calculaError(matriz2,1);
 
 if(~isempty(TEST))
+    % Precision por clase e indice kappa
     tst2=test(svmFinal,d3,'confusion_matrix');
     matriz3 = tst2.Y';
     escribe3 = calculaError(matriz3,3);
