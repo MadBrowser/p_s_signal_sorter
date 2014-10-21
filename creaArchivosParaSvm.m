@@ -2,7 +2,7 @@
 % con nombre <filtro>_<orden>_<ventana> y que tiene como data el conjunto de
 % entrenamiento reducido y total (sin reducir) además del conjunto de
 % extractores de prueba (sin reducir)
-function [] = createFilesForSVM(filterName)
+function [] = creaArchivosParaSvm(filterName)
 % Variables globales
 
 % Orden de los filtros
