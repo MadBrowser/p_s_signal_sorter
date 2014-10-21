@@ -54,15 +54,15 @@ for i = 1:length(conjuntos)
     
     if(exist('DATAFIN8'))
         [svmFinal Exac Cfinal Sfinal] = iterSVM(C,S,revisaDoble(DATAFIN8));
-        Escribe(svmFinal, Cfinal, Sfinal, cambiaDoble(DATATOT), cambiaDoble(DATAFIN8), cambiaDoble(TEST),i)
+        Escribe(svmFinal, Cfinal, Sfinal, cambiaDoble(DATATOT), cambiaDoble(DATAFIN8), cambiaDoble(TEST));
         clearvars DATAFIN8 DATAFIN7 DATAFIN6;
     elseif(exist('DATAFIN7'))
         [svmFinal Exac Cfinal Sfinal] = iterSVM(C,S,revisaDoble(DATAFIN7));
-        Escribe(svmFinal, Cfinal, Sfinal, cambiaDoble(DATATOT), cambiaDoble(DATAFIN7), cambiaDoble(TEST),i)
+        Escribe(svmFinal, Cfinal, Sfinal, cambiaDoble(DATATOT), cambiaDoble(DATAFIN7), cambiaDoble(TEST));
         clearvars DATAFIN7 DATAFIN6;
     elseif(exist('DATAFIN6'))
         [svmFinal Exac Cfinal Sfinal] = iterSVM(C,S,revisaDoble(DATAFIN6));
-        Escribe(svmFinal, Cfinal, Sfinal, cambiaDoble(DATATOT), cambiaDoble(DATAFIN6), cambiaDoble(TEST),i)
+        Escribe(svmFinal, Cfinal, Sfinal, cambiaDoble(DATATOT), cambiaDoble(DATAFIN6), cambiaDoble(TEST));
         clearvars DATAFIN6;
     end
   
