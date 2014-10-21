@@ -1,6 +1,7 @@
 function [valores] = evalua(datos,k,l)
 
 tam = length(datos);
+valores = zeros(tam, 1);
 
 for i = 1: tam
     acum = 0;
@@ -12,7 +13,14 @@ for i = 1: tam
         lim = tam;
     end
     acum = acum + sumabs(datos(i:lim));
-    acum2 = acum + sumabs(datos(i:k));
+    
+    if(i+k-1 <= tam)
+        lim2 = i + k -1;
+    else
+        lim2 = tam;
+    end
+    
+    acum2 = acum2 + sumabs(datos(i:lim2));
     valores(i,1) = ((1/l)*acum)/((1/(k-i+1))*acum2);
 end
 end
