@@ -67,6 +67,12 @@ else
     extrac(1,15) = 1;
 end
 
+if(extrac(1,14) == 1 || extrac(1,15) == 1)
+        value = 0;
+    else
+        value = 1;
+    end
+    extrac(1,16) = value;
 
 end
 
