@@ -29,7 +29,7 @@ extrac(1,6) = kurtosis(Z(:,1));
 % extrac(1,5) = KUR(E(:,1));
 % extrac(1,6) = KUR(Z(:,1));
 
-%  tercer caso la skewnes 
+%  tercer caso la skewnes
 
 extrac(1,7) = skewness(N(:,1));
 extrac(1,8) = skewness(E(:,1));
@@ -98,7 +98,7 @@ if(tam < 50 )
 end
 
 for i = 1: tam
- valores(i,1) = i * log( std(datos(1:i,1))^2) + (tam - i - 1)* log ( std( datos(i+1:tam,1))^2);
+    valores(i,1) = i * log( std(datos(1:i,1))^2) + (tam - i - 1)* log ( std( datos(i+1:tam,1))^2);
     
 end
 
@@ -131,7 +131,7 @@ for i = 1:tam
     acum = 0;
     %condicion de lectura al inicio
     if(i>tam/2)
-       inicio = i - tam/2; 
+        inicio = i - tam/2;
     end
     %condicion de lectura al final
     if(i+tam/2>tam)
@@ -172,7 +172,7 @@ for i = 1: tam
     acum = 0;
     %condicion de lectura al inicio
     if(i>tam/2)
-       inicio = i - tam/2; 
+        inicio = i - tam/2;
     end
     %condicion de lectura al final
     if(i+tam/2>tam)
@@ -211,7 +211,7 @@ for i = 1:tam
     acum = 0;
     %condicion de lectura al inicio
     if(i>tam/2)
-       inicio = i - tam/2; 
+        inicio = i - tam/2;
     end
     %condicion de lectura al final
     if(i+tam/2>tam)
@@ -222,7 +222,7 @@ for i = 1:tam
         if(val > tam)
             val = tam;
         end
-         acum = acum + (((datos(val,1) - media)/des)^4);
+        acum = acum + (((datos(val,1) - media)/des)^4);
     end
     valores(i,1) = numerador * acum - 3;
 end
@@ -268,30 +268,44 @@ end
 function [valores] = evalua(datos,k,l)
 
 tam = length(datos);
+valores = zeros(tam, 1);
 
 for i = 1: tam
-     acum = 0;
-     acum2 = 0;
-     for j = i: i + l - 1
-         aux = j;
-          if( aux > tam )
-              aux = tam;
-          end
-         acum = acum + abs(datos(aux,1)); 
-     end
-
-     for a = i: k %- l
-         aux2 = j;
-         if( aux2 > tam )
-             aux2 = tam;
-         end
-         acum2 = acum2 + abs(datos(aux2,1)); 
-     end
-     valores(i,1) = ((1/l)*acum)/((1/(k-i+1))*acum2);
+    acum = 0;
+    acum2 = 0;
+    %      for j = i: i + l - 1
+    %          aux = j;
+    %           if( aux > tam )
+    %               aux = tam;
+    %           end
+    %          acum = acum + abs(datos(aux,1));
+    %      end
+    %
+    %      for a = i: k %- l
+    %          aux2 = j;
+    %          if( aux2 > tam )
+    %              aux2 = tam;
+    %          end
+    %          acum2 = acum2 + abs(datos(aux2,1));
+    %      end
+    
+    % Cálculo de la ventana corta
+    if(i+l-1 <= tam)
+        lim = i + l -1;
+    else
+        lim = tam;
+    end
+    acum = acum + sumabs(datos(i:lim));
+    
+    % Cálculo de la ventana larga
+    if(i+k-1 <= tam)
+        lim2 = i + k -1;
+    else
+        lim2 = tam;
+    end
+    acum2 = acum2 + sumabs(datos(i:lim2));
+    
+    valores(i,1) = ((1/l)*acum)/((1/(k-i+1))*acum2);
 end
-
-%  plot(valores);
-%  pause(3);
-
 end
 % --------------
