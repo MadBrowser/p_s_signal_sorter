@@ -261,8 +261,6 @@ FE = evalua(N,k,l);
 C = FO.*FN.*FE;
 
 valor = mean(C/1000000);
-% plot(C/1000000)
-% pause(1)
 
 end
 
@@ -270,10 +268,6 @@ end
 function [valores] = evalua(datos,k,l)
 
 tam = length(datos);
-% datos = abs(datos);
-
-inicio = 1;
-final = tam;
 
 for i = 1: tam
      acum = 0;
