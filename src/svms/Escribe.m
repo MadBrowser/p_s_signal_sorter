@@ -1,10 +1,7 @@
 %% funcion que escribe el los errores obtenidos con las maquinas vector de
 %% soporteya sea de entrenamiento, validacion y test. y termina
 %% escribiendolo todo en prueba.xslx en la hoja 1
-function [inicio, Cfinal, Sfinal, escribe, escribe2, escribe3] = Escribe(svmFinal, Cfinal, Sfinal, DATA, DATAFIN, TEST, i)
-
-tam = length(DATA);
-inicial = 4;
+function [Cfinal, Sfinal, exactitud_ent_red, exactitud_ent_sr, precision_clase_e_indice_kappa] = Escribe(svmFinal, Cfinal, Sfinal, DATA, DATAFIN, TEST)
 
 tar = DATA(:,14:15);
 ext = DATA(:,1:13);
@@ -28,38 +25,23 @@ d = data(ext,tar);
 d2 = data(exttst,tartst);
 d3 = data(exttest,tartest);
 
-nombre = 'pruebaF3.xlsx';
-hoja = 'hoja1';
-
-tam = length(DATA);
-inicial = 2;
-
-
-inicio = {i,'SVM',length(DATAFIN),'','','','','',length(DATAFIN), length(DATAFIN(DATAFIN(:,14)==1)), length(DATAFIN(DATAFIN(:,15)==1)), length(DATA)}, length(DATAFIN(DATAFIN(:,16)==1))
-%csvwrite(nombre,inicio,hoja,strcat('A',int2str(i + inicial)));
-
 % indicadores de exactitud por clase y general cjto entrenamiento reducido
-tst=test(svmFinal,d2,'confusion_matrix');
+tst = test(svmFinal,d2,'confusion_matrix');
 matriz = tst.Y';
-escribe = calculaError(matriz,1);
+exactitud_ent_red = calculaError(matriz,1);
 
 % indicadores de exactitud por clase y general cjto entrenamiento s/reducir
-tst1=test(svmFinal,d,'confusion_matrix');
+tst1 = test(svmFinal,d,'confusion_matrix');
 matriz2 = tst1.Y';
-escribe2 = calculaError(matriz2,1);
+exactitud_ent_sr = calculaError(matriz2,1);
 
 if(~isempty(TEST))
     % Precision por clase e indice kappa
     tst2=test(svmFinal,d3,'confusion_matrix');
     matriz3 = tst2.Y';
-    escribe3 = calculaError(matriz3,3);
+    precision_clase_e_indice_kappa = calculaError(matriz3,3);
 else
-    escribe3 = ['','','','','','','','',''];
+    precision_clase_e_indice_kappa = ['','','','','','','','',''];
 end
-
-
-%csvwrite(nombre, [ Cfinal, Sfinal, escribe, escribe2, escribe3, 'O Vs A'],'hoja1',strcat('N',int2str(i + inicial)));
-
-
 
 end
