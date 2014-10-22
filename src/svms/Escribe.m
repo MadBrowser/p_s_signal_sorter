@@ -3,14 +3,14 @@
 %% escribiendolo todo en prueba.xslx en la hoja 1
 function [Cfinal, Sfinal, exactitud_ent_red, exactitud_ent_sr, precision_clase_e_indice_kappa] = Escribe(svmFinal, Cfinal, Sfinal, DATA, DATAFIN, TEST)
 
-tar = DATA(:,14:15);
+tar = DATA(:,14:16);
 ext = DATA(:,1:13);
 
-tartst = DATAFIN(:,14:15);
+tartst = DATAFIN(:,14:16);
 exttst = DATAFIN(:,1:13);
 
 if(~isempty(TEST))
-    tartest = TEST(:,14:15);
+    tartest = TEST(:,14:16);
     exttest = TEST(:,1:13);
 else
     tartest = [];
