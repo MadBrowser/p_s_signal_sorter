@@ -36,7 +36,7 @@ matriz2 = tst1.Y';
 exactitud_ent_sr = calculaError(matriz2,1);
 
 if(~isempty(TEST))
-    % Precision por clase e indice kappa
+    % Precision por clase e indice kappa cjto de prueba
     tst2=test(svmFinal,d3,'confusion_matrix');
     matriz3 = tst2.Y';
     precision_clase_e_indice_kappa = calculaError(matriz3,3);
