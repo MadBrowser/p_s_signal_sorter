@@ -36,7 +36,7 @@ for i = orders
         [Cfinal, Sfinal, exactitud_ent_red, exactitud_ent_sr, precision_clase_e_indice_kappa] = Escribe(svmFinal, Cfinal, Sfinal, cambiaDoble(training_ext_sr), cambiaDoble(training_ext_red), cambiaDoble(testing_ext_sr));
         
         save(fileName, '-append', 'Cfinal', 'Sfinal', 'exactitud_ent_red', 'exactitud_ent_sr', 'precision_clase_e_indice_kappa');
-        clearvars('-except',initialVars{:});
+        clearvars('svmFinal', 'Exac', 'Cfinal', 'Sfinal', 'exactitud_ent_red', 'exactitud_ent_sr', 'precision_clase_e_indice_kappa', 'training_ext_sr', 'training_ext_red', 'testing_ext_sr');
     end
 end
 end
