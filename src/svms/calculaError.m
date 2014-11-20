@@ -25,7 +25,7 @@ elseif(origen >= 1)% indicadores de exactitud por clase y general
         P0 = sum(diag(matriz))/(sum(matriz(1,:)) + sum(matriz(2,:)) + sum(matriz(3,:))); 
         Pe = (sum(matriz(1,:))*sum(matriz(:,1)) + sum(matriz(2,:))*sum(matriz(:,2)) + (sum(matriz(3,:))*sum(matriz(:,3))))/(sum(matriz(1,:)) + sum(matriz(2,:)) + sum(matriz(3,:)))^2; 
         error{1,6} = (P0 - Pe)/ (1 - Pe) ;
-    elseif(origen == 3)% Precision por clase e indice kappa
+    elseif(origen == 3)% Precision por clase e indice kappa (cjto. Prueba)
         % Precisión clase P
         error{1,5} = matriz(1,1)/sum(matriz(1,:));
         % Precisión clase S

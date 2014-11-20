@@ -4,10 +4,10 @@
 function GenerarSVMs(filterName)
 
 % Orden de los filtros
-orders = [2, 4, 6];
+orders = [2,4,6];
 
 % Tamaños de ventana
-windows = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+windows = [2,3,4,5,6,7,8,9,10];
 
 % Ruta donde se encuentran los archivos
 generalDataPath = '~/Dev/p_s_signal_sorter/Data/';
@@ -35,7 +35,7 @@ for i = orders
         
         [Cfinal, Sfinal, exactitud_ent_red, exactitud_ent_sr, precision_clase_e_indice_kappa] = Escribe(svmFinal, Cfinal, Sfinal, cambiaDoble(training_ext_sr), cambiaDoble(training_ext_red), cambiaDoble(testing_ext_sr));
         
-        save(fileName, '-append', 'Cfinal', 'Sfinal', 'exactitud_ent_red', 'exactitud_ent_sr', 'precision_clase_e_indice_kappa');
+        save(fileName, '-append', 'Cfinal', 'Sfinal', 'exactitud_ent_red', 'exactitud_ent_sr', 'precision_clase_e_indice_kappa', 'svmFinal');
         clearvars('svmFinal', 'Exac', 'Cfinal', 'Sfinal', 'exactitud_ent_red', 'exactitud_ent_sr', 'precision_clase_e_indice_kappa', 'training_ext_sr', 'training_ext_red', 'testing_ext_sr');
     end
 end

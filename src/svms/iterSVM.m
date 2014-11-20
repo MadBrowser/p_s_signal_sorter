@@ -11,6 +11,7 @@ for c = C(1,1):0.2:C(1,2)
     for s = S(1,1):0.2:S(1,2)
         j = j + 1; 
         [sist, matriz] = SVM(DATAFIN,c,s);
+        disp(matriz);
         Exac(i,j) = calculaError(matriz,0);
         % Escoje a la mejor svm y se almacenan sus datos
         if(Exac(i,j) >= max(Exac(:)))
